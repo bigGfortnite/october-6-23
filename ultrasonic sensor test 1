@@ -1,0 +1,20 @@
+
+#include <PRIZM.h>
+PRIZM prizm;
+
+void setup() {
+  prizm.PrizmBegin();
+  prizm.setMotorInvert(2,1);
+  //servo start
+  prizm.setServoPosition(1,0);
+  Serial.begin(9600);
+}
+
+void loop() {
+int distance=prizm.readSonicSensorCM(3);
+if(distance<10){
+  prizm.setMotorPowers(0,0);
+} else{
+  prizm.setMotorSpeed(100,100);
+}
+  
